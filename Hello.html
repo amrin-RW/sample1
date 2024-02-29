@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Filter</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #video {
+            width: 50%;
+            height: auto;
+            border: none;
+            float: left;
+        }
+        iframe {
+            width: 50%;
+            height: 100vh;
+            border: none;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <video id="video" autoplay></video>
+    <iframe src="https://jaya-rw-jp.vercel.app/"></iframe>
+    
+    <script>
+        // Access the camera stream
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function(err) {
+                console.error('Error accessing the camera: ', err);
+            });
+    </script>
+</body>
+</html>
